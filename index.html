@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<!--
+  LIGHTSTREAMER - www.lightstreamer.com
+  JMS Portfolio Demo
+
+  Copyright 2013 Weswit s.r.l.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <title>Lightstreamer :: JMS Portfolio Demo</title>
+  <link rel="stylesheet" type="text/css" href="css/portfolio.css" />
+  <script src="require.js"></script>
+  <script src="lightstreamer.js"></script>
+  <script src="lightstreamer-jms.js"></script>
+</head>
+
+<body>
+  <div id="wrap">
+    <table width="340" border="0">
+      <tr>
+        <td><a href="http://www.lightstreamer.com" target="_blank">
+          <img src="images/logo.png" alt="LIGHTSTREAMER" hspace="0" border="0" /></a></td>
+        <td class="demoTitle">JMS PORTFOLIO DEMO</td>
+      </tr>
+    </table>
+
+    <br />
+
+    <!-- portfolio table; see Lightstreamer-related code in portfolio.js -->
+    <table width="340" cellspacing="1" cellpadding="2" border="0">
+      <tr>
+        <td width="100" nowrap id="col_command" class="tableTitle">
+          <a href="#" onclick="changeSort('command');return false;">Command</a>
+          <img width="10" src="images/spacer.gif" id="img_command" /></td>
+
+        <td width="100" nowrap id="col_key" class="tableTitle">
+          <a href="#" onclick="changeSort('key');return false;">Key</a>
+          <img width="10" src="images/spacer.gif" id="img_key" /></td>
+
+        <td width="137" nowrap id="col_qty" class="tableTitle">
+          <a  href="#" onclick="changeSort('qty');return false;">Quantity</a>
+          <img width="10" src="images/spacer.gif" id="img_qty" /></td>
+      </tr>
+      <!-- row template; will be cloned for each received "ADD" command -->
+      <tr class="lscold" id="portfolio" data-source="lightstreamer">
+        <td style="text-align: center;"><div data-source="lightstreamer" data-field="command"></div></td>
+        <td style="text-align: center;"><div data-source="lightstreamer" data-field="key"></div></td>
+        <td style="text-align: right;"><div data-source="lightstreamer" data-field="qty"></div></td>
+      </tr>
+    </table>
+
+    <br />
+
+    <!-- order entry section; see management code in buysell.js -->
+    <form onSubmit="return false;">
+      <table width="340" border="0" cellpadding="2" cellspacing="0">
+        <tr class="tableTitle">
+          <td colspan="3">Submit Order</td>
+        </tr>
+        <tr class="inputPanel">
+          <td width="80">
+            <select id="stockN" type="select" style="font-size: 8pt"></select>
+          </td>
+          <td width="130">
+            Quantity: <input id="qtyN" type="text" size="8" style="font-size: 8pt" />
+          </td>
+          <td width="130" style="text-align: center;">
+            <input type="submit" id="buy" disabled value="Buy" onclick="submitForm('BUY')" />&nbsp;&nbsp;
+            <input type="submit" id="sell" disabled value="Sell" onclick="submitForm('SELL')" />
+          </td>
+        </tr>
+      </table>
+    </form>
+
+    <p class="note">
+      - Use the red panel to <b>BUY</b> and <b>SELL</b> stocks.<br />
+      - Click on any table title to <b>SORT</b> on different columns<br />
+      &nbsp; (each click inverts the sort direction and the third click<br />
+      &nbsp; disables sorting).
+    </p>
+  </div>
+
+  <!-- order entry section management -->
+  <script src="buysell.js" type="text/javascript"></script>
+
+  <!-- portfolio table management -->
+  <script src="portfolio.js" type="text/javascript"></script>
+
+</body>
+
+</html>
