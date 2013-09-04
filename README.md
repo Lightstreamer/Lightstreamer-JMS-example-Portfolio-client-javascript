@@ -34,16 +34,16 @@ To set the data adapter name and the connection name look where the connection i
   });
 ```
 
-To access the demo from a web browser copy it somewhere under you root webserver directory. You can also add it to the standard Lightstreamer demo pages under "LightstreamerHome/pages/demos" directory and access it as: <i>http://_your_lightstreamer_http_ address_/demos/StockListDemo_JMS/</i>.
+To access the demo from a web browser copy it somewhere under you root webserver directory. You can also add it to the standard Lightstreamer demo pages under "LightstreamerHome/pages/demos" directory and access it as: <i>http://_your lightstreamer http address_/demos/PortfolioDemo_JMS/</i>.
 
 You can also simply start by opening the index.html file with your browser.
 
 
 # See Also #
 
-## Lightstreamer back-end Service needed by these demo clients ##
+## Lightstreamer back-end Service needed by this demo client ##
 
-* To be add: [Lightstreamer JMS Gateway Portfolio Demo Service]()
+* [Lightstreamer JMS Gateway Portfolio Demo Service](https://github.com/Weswit/Lightstreamer-JMS-example-Portfolio-service-java)
 
 ## Similar demo clients that may interest you ##
 
