@@ -19,7 +19,7 @@ Before you can run the demo of this project some dependencies need to be solved:
 -  Get the require.js file form [requirejs.org](http://requirejs.org/docs/download.html) and put it in the root folder of this project.
 -  Get the lightstreamer-jms.js file from the [Lightstreamer JMS Gateway preview](http://www.lightstreamer.com/download) (please click the "From the Labs" section) and put it in the root folder of this project.
 
-Now, you need to configure the index.html of this example by specifying the name of the data adapter you are going to use. By default the demo will look for the <b>HornetQ</b> data adapter, please refer to the related [Service project]() for more details on the choice of a JMS broker to be used. 
+Now, you need to configure the index.html of this example by specifying the name of the data adapter you are going to use. By default the demo will look for the <b>HornetQ</b> data adapter, please refer to the related [Service project](https://github.com/Weswit/Lightstreamer-JMS-example-Portfolio-service-java) for more details on the choice of a JMS broker to be used. 
 To set the data adapter name and the connection name look where the connection is created:
 
 ```js
