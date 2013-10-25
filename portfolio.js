@@ -126,13 +126,20 @@ require(["ConnectionFactory", "DynaGrid", "StatusWidget"], function(ConnectionFa
 		// Start the connection
 		conn.start();
 
-		// Send subscription message for portfolio
-		queueSession= conn.createSession(false, "AUTO_ACK");
-		var queue= queueSession.createQueue("portfolioQueue");
-		var producer= queueSession.createProducer(queue, null);
+		// Wait a moment before subscribing to avoid the subscribe
+		// message to get to the service before the topic subscription
+		// is actually started
+		setTimeout(function() {
 
-		var msg= queueSession.createTextMessage("SUBSCRIBE|" + portfolioId);
-		producer.send(msg);
+			// Send subscription message for portfolio
+			queueSession= conn.createSession(false, "AUTO_ACK");
+			var queue= queueSession.createQueue("portfolioQueue");
+			var producer= queueSession.createProducer(queue, null);
+
+			var msg= queueSession.createTextMessage("SUBSCRIBE|" + portfolioId);
+			producer.send(msg);
+
+		}, 500);
 
 	}, function(errorCode, errorMessage) {
 
