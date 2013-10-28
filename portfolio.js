@@ -116,7 +116,7 @@ require(["ConnectionFactory", "DynaGrid", "StatusWidget"], function(ConnectionFa
 			onMessage: function(message) {
 
 				// Message received
-				var portfolioMessage= message.body;
+				var portfolioMessage= message.getObject();
 
 				// Update the dyna grid
 				portfolioGrid.updateRow(portfolioMessage.key, portfolioMessage);
