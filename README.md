@@ -1,8 +1,6 @@
-# Lightstreamer JMS Gateway Portfolio Demo Client for JavaScript #
+# Lightstreamer JMS Gateway - Basic Portfolio Demo - HTML Client #
 
 This project includes a front-end example based on the Basic Portfolio Demo for Lightstreamer JMS gateway.
-
-## JMS Portfolio Demo ##
 
 In the JMS Portfolio Demo, a virtual stock portfolio, shared among all the connected users, is displayed.
 By using the "Submit Order" panel, you can buy or sell a stock (identified by an item number), filling in the Quantity field and pressing the proper button.<br>
@@ -52,13 +50,13 @@ Please refer to Lightstreamer web site [download page](http://www.lightstreamer.
 
 ## Lightstreamer back-end Service needed by this demo client ##
 
-* [Lightstreamer JMS Gateway Portfolio Demo Service](https://github.com/Weswit/Lightstreamer-JMS-example-Portfolio-service-java)
+* [Lightstreamer JMS Gateway - Basic Chat Demo - Java SE (JMS) Service](https://github.com/Weswit/Lightstreamer-JMS-example-Chat-service-java)
 
 ## Similar demo clients that may interest you ##
 
-* [Lightstreamer JMS Gateway StockList Demo Client for JavaScript](https://github.com/Weswit/Lightstreamer-JMS-example-StockList-client-javascript)
-* [Lightstreamer JMS Gateway Chat Demo Client for JavaScript](https://github.com/Weswit/Lightstreamer-JMS-example-Chat-client-javascript)
-* [Lightstreamer Portfolio Demo Client for javascript](https://github.com/Weswit/Lightstreamer-example-Portfolio-client-javascript)
+* [Lightstreamer JMS Gateway - Basic Stock-List Demo - HTML Client](https://github.com/Weswit/Lightstreamer-JMS-example-StockList-client-javascript)
+* [Lightstreamer JMS Gateway - Basic Chat Demo - HTML Client](https://github.com/Weswit/Lightstreamer-JMS-example-Chat-client-javascript)
+* [Lightstreamer - Portfolio Demos - HTML Clients](https://github.com/Weswit/Lightstreamer-example-Portfolio-client-javascript)
 
 # Lightstreamer Compatibility Notes #
 
