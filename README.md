@@ -50,7 +50,7 @@ Please refer to Lightstreamer web site [download page](http://www.lightstreamer.
 
 ## Lightstreamer back-end Service needed by this demo client ##
 
-* [Lightstreamer JMS Gateway - Basic Chat Demo - Java SE (JMS) Service](https://github.com/Weswit/Lightstreamer-JMS-example-Chat-service-java)
+* [Lightstreamer JMS Gateway - Basic Chat Demo - Java (JMS) Service](https://github.com/Weswit/Lightstreamer-JMS-example-Chat-service-java)
 
 ## Similar demo clients that may interest you ##
 
