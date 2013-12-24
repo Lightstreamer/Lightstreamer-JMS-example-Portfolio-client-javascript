@@ -1,5 +1,7 @@
 # Lightstreamer JMS Gateway - Basic Portfolio Demo - HTML Client #
 
+<!-- START DESCRIPTION lightstreamer-jms-example-portfolio-client-javascript -->
+
 This project includes a front-end example based on the Basic Portfolio Demo for Lightstreamer JMS gateway.
 
 In the JMS Portfolio Demo, a virtual stock portfolio, shared among all the connected users, is displayed.
@@ -9,6 +11,7 @@ This page uses the <b>JMS JS Client API for Lightstreamer</b> on top of <b>JavaS
 
 Check out the sources for further explanations.
 
+<!-- END DESCRIPTION lightstreamer-jms-example-portfolio-client-javascript -->
 # Deploy #
 
 Before you can run the demo of this project some dependencies need to be solved:
@@ -50,7 +53,10 @@ Please refer to Lightstreamer web site [download page](http://www.lightstreamer.
 
 ## Lightstreamer back-end Service needed by this demo client ##
 
+<!-- START RELATED_ENTRIES -->
 * [Lightstreamer JMS Gateway - Basic Chat Demo - Java (JMS) Service](https://github.com/Weswit/Lightstreamer-JMS-example-Chat-service-java)
+
+<!-- END RELATED_ENTRIES -->
 
 ## Similar demo clients that may interest you ##
 
