@@ -16,15 +16,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-a {
-  color: #ffffff;
-}
 body {
   background-color: black;
   color: white;
+  font-family: Verdana, Arial, Helvetica, Sans-serif;
+}
+.button {
+	cursor:pointer;
 }
 .demoTitle {
-  font-family: Verdana, Arial, Helvetica, Sans-serif;
   font-size: 9pt;
   color: #ffffff;
   font-weight: bold;
@@ -35,19 +35,19 @@ body {
   font-size: 7pt;
   color: #ffffff;
   background-color: #336600;
+  height:15px;
   font-weight: bold;
   text-align: center;
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 .tableTitleSorted {
-  font-family: Verdana, Arial, Helvetica, sans-serif;
-  font-size: 7pt;
-  color: #ffffff;
   background: #00cc00;
-  font-weight: bold;
-  text-align: center;
 }
 .inputPanel {
-  font-family: Verdana, Arial, Helvetica, sans-serif;
   font-size: 7pt;
   color: #ffffff;
   background: #cc0000;
@@ -56,14 +56,12 @@ body {
   vertical-align: middle
 }
 .note {
-  font-family: Verdana, Arial, Helvetica, sans-serif;
   font-size: 8pt;
   color: #00ff00;
   font-weight: normal;
   text-align: left;
 }
 .lshot {
-  font-family: Verdana, Arial, Helvetica, sans-serif;
   font-size: 8pt;
   color: #000000;
   background: #ffff66;
@@ -71,7 +69,6 @@ body {
   nowrap: nowrap;
 }
 .lscold {
-  font-family: Verdana, Arial, Helvetica, sans-serif;
   font-size: 8pt;
   color: #000000;
   background: #ddffaa;
@@ -79,7 +76,6 @@ body {
   nowrap: nowrap;
 }
 .commandhot {
-  font-family: Verdana, Arial, Helvetica, sans-serif;
   font-size: 8pt;
   font-style: italic;
   color: #000000;
@@ -87,7 +83,6 @@ body {
   font-weight: normal;
 }
 .commandcold {
-  font-family: Verdana, Arial, Helvetica, sans-serif;
   font-size: 8pt;
   font-style: italic;  
   color: #000000;

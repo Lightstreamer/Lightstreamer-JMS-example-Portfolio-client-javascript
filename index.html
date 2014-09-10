@@ -28,6 +28,7 @@
   <script src="http://demos.lightstreamer.com/commons/require.js"></script>
   <script src="http://demos.lightstreamer.com/commons/lightstreamer.js"></script>
   <script src="lightstreamer-jms.js"></script>
+  <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 </head>
 
 <body>
@@ -45,17 +46,17 @@
     <!-- portfolio table; see Lightstreamer-related code in portfolio.js -->
     <table width="340" cellspacing="1" cellpadding="2" border="0">
       <tr>
-        <td width="100" nowrap id="col_command" class="tableTitle">
-          <a href="#" onclick="changeSort('command');return false;">Command</a>
-          <img width="10" src="images/spacer.gif" id="img_command" /></td>
+        <td width="100" nowrap id="col_command" class="tableTitle button" data-sorting="command">
+          Command
+          <img id="img_command" /></td>
 
-        <td width="100" nowrap id="col_key" class="tableTitle">
-          <a href="#" onclick="changeSort('key');return false;">Key</a>
-          <img width="10" src="images/spacer.gif" id="img_key" /></td>
+        <td width="100" nowrap id="col_key" class="tableTitle button" data-sorting="key">
+          Key
+          <img id="img_key" /></td>
 
-        <td width="137" nowrap id="col_qty" class="tableTitle">
-          <a  href="#" onclick="changeSort('qty');return false;">Quantity</a>
-          <img width="10" src="images/spacer.gif" id="img_qty" /></td>
+        <td width="137" nowrap id="col_qty" class="tableTitle button" data-sorting="qty">
+          Quantity
+          <img id="img_qty" /></td>
       </tr>
       <!-- row template; will be cloned for each received "ADD" command -->
       <tr class="lscold" id="portfolio" data-source="lightstreamer">
