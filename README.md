@@ -21,11 +21,12 @@ Before you can run the demo of this project some dependencies need to be solved:
 
 * Note that, as prerequisite, the [Lightstreamer JMS Gateway - Stock-List Demo - Java (JMS) Service](https://github.com/Weswit/Lightstreamer-JMS-example-Portfolio-service-java) has to be deployed on your local Lightstreamer Server instance (running a properly configured JMS Gateway). Please check out that project and follow the installation instructions provided with it.
 * Launch Lightstreamer Server.
-* Get the `lightstreamer.js` file from the [latest Lightstreamer distribution](http://download.lightstreamer.com/) and put it in the root folder of this project.
-* Get the `require.js` file form [requirejs.org](http://requirejs.org/docs/download.html) and put it in the root folder of this project.
 * Get the `lightstreamer-jms.js` file from the [Lightstreamer JMS Gateway](http://download.lightstreamer.com/#jms) and put it in the root folder of this project.
+* Lightstreamer JS client is currently hot-linked in the html page: you may want to replace it with a local version and/or to upgrade its version.
+* RequireJS is currently hot-linked in the html page: you may want to replace it with a local version and/or to upgrade its version.
+* jQuery is currently hot-linked in the html page: you may want to replace it with a local version and/or to upgrade its version.
 
-Now, you need to configure the `index.html` of this example by specifying the name of the data adapter you are going to use. By default the demo will look for the <b>HornetQ</b> data adapter, please refer to the related [Service project](https://github.com/Weswit/Lightstreamer-JMS-example-Portfolio-service-java) for more details on the choice of a JMS broker to be used.
+Now, you need to configure the `portfolio.js` of this example by specifying the name of the data adapter you are going to use. By default the demo will look for the <b>HornetQ</b> data adapter, please refer to the related [Service project](https://github.com/Weswit/Lightstreamer-JMS-example-Portfolio-service-java) for more details on the choice of a JMS broker to be used.
 To set the data adapter name and the connection name look where the connection is created:
 
 ```js
@@ -59,5 +60,5 @@ To access the demo from a web browser copy it somewhere under your root webserve
 
 ## Lightstreamer Compatibility Notes
 
-* Compatible with Lightstreamer JavaScript Client library version 6.0 or newer.
+* Compatible with Lightstreamer JavaScript Client library version 6.1 or newer.
 * Compatible with Lightstreamer JMS Gateway Adapter since version 1.0 or newer.
