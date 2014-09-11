@@ -13,6 +13,8 @@ This page uses the <b>JMS JS Client API for Lightstreamer</b> on top of [JavaScr
 
 Check out the sources for further explanations.
 
+![screenshot](screen-large.png)
+
 <!-- END DESCRIPTION lightstreamer-jms-example-portfolio-client-javascript -->
 
 ## Install
