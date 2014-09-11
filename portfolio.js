@@ -54,6 +54,9 @@ require(["ConnectionFactory", "./grid", "StatusWidget"], function(ConnectionFact
 
     // Start the connection
     conn.start();
+    
+    //enable form
+    $("input").prop('disabled', false);
 
     // Wait a moment before subscribing to avoid the subscribe
     // message to get to the service before the topic subscription
@@ -82,18 +85,5 @@ require(["ConnectionFactory", "./grid", "StatusWidget"], function(ConnectionFact
     lsClient.connectionSharing.enableSharing("JMSDemoCommonConnection", "ATTACH", "CREATE");
     lsClient.addListener(new StatusWidget("left", "0px", true));
 
-    // Add listener to enable buttons only when connected
-    lsClient.addListener({
-      onStatusChange: function(newStatus) {
-        if (newStatus.indexOf("CONNECTED") == 0) {
-          document.getElementById("buy").disabled= false;
-          document.getElementById("sell").disabled= false;
-
-        } else {
-          document.getElementById("buy").disabled= true;
-          document.getElementById("sell").disabled= true;
-        }
-      }
-    });
   });
 });
