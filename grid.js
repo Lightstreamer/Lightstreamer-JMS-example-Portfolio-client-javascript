@@ -30,7 +30,11 @@ define(["DynaGrid"],function(DynaGrid) {
   var gridWrap = {
     
     updateRow: function(key,data) {
-      portfolioGrid.updateRow(key,data);
+      if (data.command == "DELETE") {
+        portfolioGrid.removeRow(key);
+      } else {
+        portfolioGrid.updateRow(key,data);
+      }
     },
     
     changeSort: function(sortOn) {

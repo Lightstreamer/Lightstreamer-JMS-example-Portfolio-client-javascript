@@ -46,8 +46,8 @@ require(["ConnectionFactory", "./grid", "StatusWidget"], function(ConnectionFact
 
         // Message received
         var portfolioMessage= message.getObject();
-
-        // Update the dyna grid
+        
+        // Update the grid
         grid.updateRow(portfolioMessage.key, portfolioMessage);
       }
     });
