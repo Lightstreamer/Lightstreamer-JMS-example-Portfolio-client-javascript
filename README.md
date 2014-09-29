@@ -32,15 +32,7 @@ Now, you need to configure the `portfolio.js` of this example by specifying the 
 To set the data adapter name and the connection name look where the connection is created:
 
 ```js
-  ConnectionFactory.createConnection(function(conn) {
-    ...
-    ...
-    ...
-  }, "http://localhost:8080/", "JMS", "HornetQ", // Change data adapter here
-    ...
-    ...
-    ...
-  });
+  ConnectionFactory.createConnection("http://localhost:8080/", "JMS", "HornetQ", null, null, {
 ```
 
 To access the demo from a web browser copy it somewhere under your root webserver directory. You can also add it to the standard Lightstreamer demo pages under `LightstreamerHome/pages/demos` directory and access it as: <i>http://_your lightstreamer http address_/demos/PortfolioDemo_JMS/</i>.
@@ -63,4 +55,4 @@ To access the demo from a web browser copy it somewhere under your root webserve
 ## Lightstreamer Compatibility Notes
 
 * Compatible with Lightstreamer JavaScript Client library version 6.1 or newer.
-* Compatible with Lightstreamer JMS Gateway Adapter since version 1.0 or newer.
+* Compatible with Lightstreamer JMS Gateway Adapter since version 1.1 or newer.

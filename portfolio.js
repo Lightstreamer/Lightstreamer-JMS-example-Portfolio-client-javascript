@@ -28,62 +28,62 @@ var portfolioId= "portfolio1";
 var queueSession= null;
 
 require(["ConnectionFactory", "./grid", "StatusWidget"], function(ConnectionFactory, grid, StatusWidget) {
-  ConnectionFactory.createConnection(function(conn) {
+  ConnectionFactory.createConnection("http://localhost:8080/", "JMS", "HornetQ", null, null, {
+    onConnectionCreated: function(conn) {
+  
+      // Connection succeeded, topic subscription
+      var topicSession= conn.createSession(false, "PRE_ACK");
+      var topic= topicSession.createTopic("portfolioTopic");
+      var consumer= topicSession.createConsumer(topic, null);
+  
+      // Let's define the initial sorting column
+      grid.changeSort("key");
+  
+      // Add listener to message consumer
+      consumer.setMessageListener({
+        onMessage: function(message) {
+  
+          // Message received
+          var portfolioMessage= message.getObject();
+          
+          // Update the grid
+          grid.updateRow(portfolioMessage.key, portfolioMessage);
+        }
+      });
+  
+      // Start the connection
+      conn.start();
+      
+      //enable form
+      $("input").prop('disabled', false);
+  
+      // Wait a moment before subscribing to avoid the subscribe
+      // message to get to the service before the topic subscription
+      // is actually started
+      setTimeout(function() {
+  
+        // Send subscription message for portfolio
+        queueSession= conn.createSession(false, "AUTO_ACK");
+        var queue= queueSession.createQueue("portfolioQueue");
+        var producer= queueSession.createProducer(queue, null);
+  
+        var msg= queueSession.createTextMessage("SUBSCRIBE|" + portfolioId);
+        producer.send(msg);
+  
+      }, 500);
+  
+    },
+    onConnectionFailed: function(errorCode, errorMessage) {
 
-    // Connection succeeded, topic subscription
-    var topicSession= conn.createSession(false, "PRE_ACK");
-    var topic= topicSession.createTopic("portfolioTopic");
-    var consumer= topicSession.createConsumer(topic, null);
+      // Connection failed, show the error
+      alert("Error: " + errorCode + " " + errorMessage);
 
-    
-
-    // Let's define the initial sorting column
-    grid.changeSort("key");
-
-    // Add listener to message consumer
-    consumer.setMessageListener({
-      onMessage: function(message) {
-
-        // Message received
-        var portfolioMessage= message.getObject();
-        
-        // Update the grid
-        grid.updateRow(portfolioMessage.key, portfolioMessage);
-      }
-    });
-
-    // Start the connection
-    conn.start();
-    
-    //enable form
-    $("input").prop('disabled', false);
-
-    // Wait a moment before subscribing to avoid the subscribe
-    // message to get to the service before the topic subscription
-    // is actually started
-    setTimeout(function() {
-
-      // Send subscription message for portfolio
-      queueSession= conn.createSession(false, "AUTO_ACK");
-      var queue= queueSession.createQueue("portfolioQueue");
-      var producer= queueSession.createProducer(queue, null);
-
-      var msg= queueSession.createTextMessage("SUBSCRIBE|" + portfolioId);
-      producer.send(msg);
-
-    }, 500);
-
-  }, function(errorCode, errorMessage) {
-
-    // Connection failed, show the error
-    alert("Error: " + errorCode + " " + errorMessage);
-
-  }, "http://localhost:8080/", "JMS", "HornetQ",  // Change data adapter here
-    null, null, function(lsClient) {
-
-    // Enable connection sharing and status widget (optional)
-    lsClient.connectionSharing.enableSharing("JMSDemoCommonConnection", "ATTACH", "CREATE");
-    lsClient.addListener(new StatusWidget("left", "0px", true));
-
+    },   
+    onLSClient: function(lsClient) {
+      // Enable connection sharing and status widget (optional)
+      lsClient.connectionSharing.enableSharing("JMSDemoCommonConnection", "ATTACH", "CREATE");
+      lsClient.addListener(new StatusWidget("left", "0px", true));
+  
+    }
   });
 });
