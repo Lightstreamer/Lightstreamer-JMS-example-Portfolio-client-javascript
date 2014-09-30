@@ -18,7 +18,6 @@ define(["DynaGrid"],function(DynaGrid) {
       // visual effects on updates
       info.setHotTime(hotTime);
       info.setStyle("lshot", "lscold");
-      info.setCellStyle("command", "commandhot", "commandcold");
     }
   });
   
@@ -30,7 +29,7 @@ define(["DynaGrid"],function(DynaGrid) {
   var gridWrap = {
     
     updateRow: function(key,data) {
-      if (data.command == "DELETE") {
+      if (data.qty == "0") {
         portfolioGrid.removeRow(key);
       } else {
         portfolioGrid.updateRow(key,data);
