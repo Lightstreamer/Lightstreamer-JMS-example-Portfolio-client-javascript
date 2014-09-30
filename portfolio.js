@@ -25,8 +25,6 @@ var portfolioId= "portfolio1";
 
 //////////////// Connection setup
 
-var queueSession= null;
-
 require(["ConnectionFactory", "./grid", "StatusWidget"], function(ConnectionFactory, grid, StatusWidget) {
   
   //Let's define the initial sorting column
@@ -35,9 +33,8 @@ require(["ConnectionFactory", "./grid", "StatusWidget"], function(ConnectionFact
   ConnectionFactory.createConnection("http://localhost:8080/", "JMS", "HornetQ", null, null, {
     onConnectionCreated: function(conn) {
       
-      var session = conn.createSession(false, "PRE_ACK");
-      
-      
+      //this listener will be used to reroute updates from  
+      //the JMS consumers to the UI
       var messageListener = {
           onMessage: function(message) {
             var portfolioMessage= message.getObject();
@@ -45,49 +42,81 @@ require(["ConnectionFactory", "./grid", "StatusWidget"], function(ConnectionFact
           }
       };
       
+      //setup JMS
       
+      //create a session
+      var session = conn.createSession(false, "PRE_ACK");
       
-      //create the queue that will be used to send requests/messages to the service
+      //create the queue that will be used to send requests to the service
       var queue = session.createQueue("portfolioQueue");
       var producer = session.createProducer(queue, null);
       
       //create the topic, updates to the portfolio status will be received here
       var topic = session.createTopic("portfolioTopic");
       var consumer = session.createConsumer(topic, null);
+      consumer.setMessageListener(messageListener);
       
-      //create a temporary queue, the response will arrive here
+      //we'll ask the service about the current status of the portfolio,
+      //the answer will arrive on this temporary queue
       session.createTemporaryQueue(function(tempQueue) {
-        //temp queue ready
+        //temp queue ready, attach a listener
         var responseConsumer = session.createConsumer(tempQueue);
         responseConsumer.setMessageListener(messageListener);
        
-
-        
         //create the request
         var statusRequest = session.createMapMessage();
         statusRequest.setObject("request","GET_PORTFOLIO_STATUS");
         statusRequest.setObject("portfolio",portfolioId);
-        //Set the reply to field to the temp queue you created above, this is the queue the server will respond to
+        //Set the reply to field to the temp queue created above, so the service know where to answer
         statusRequest.setJMSReplyTo(tempQueue);
         
-        
+        //we might use a correlation id to match request/response
         //var correlationId = new Date().getTime() + "" + Math.round(Math.random()*1000);
         //statusRequest.setJMSCorrelationID(correlationId);
         producer.send(statusRequest);
         
       });
 
-     
-      
       // Start the connection
       conn.start();
       
+
+      //setup the user-input part of the UI
+      
+      //fill the select with some stocks that can be bought/sold
+      var AVAIL_STOCKS = 31;
+      for (var i = 1; i <= AVAIL_STOCKS; i++) {
+        var item = "item"+i;
+        $("#stockN").append($("<option />").val(item).text(item));
+      }
+      
+      // attach the handler to the buy/sell buttons
+      $(":submit").click(function(event) {
+        event.preventDefault();
+       
+        var qty = Number($("#qtyN").val());
+        if (!qty || qty < 0) {
+          alert("Please fill the 'quantity' field with a positive number.");
+          return;
+        } 
+        
+        var buyRequest = session.createMapMessage();
+        buyRequest.setObject("request",$(this).val().toUpperCase());
+        buyRequest.setObject("portfolio",portfolioId);
+        buyRequest.setObject("stock",$("#stockN").val());
+        buyRequest.setObject("quantity",qty);
+        producer.send(buyRequest);
+        
+      });
+      
+      
+      //enable form
+      $("input").prop('disabled', false);
+      
     },
     onConnectionFailed: function(errorCode, errorMessage) {
-
       // Connection failed, show the error
       alert("Error: " + errorCode + " " + errorMessage);
-
     },   
     onLSClient: function(lsClient) {
       // Enable connection sharing and status widget (optional)

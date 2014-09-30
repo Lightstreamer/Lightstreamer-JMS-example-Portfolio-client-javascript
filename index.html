@@ -65,7 +65,7 @@
     <br />
 
     <!-- order entry section; see management code in buysell.js -->
-    <form onSubmit="return false;">
+    <form>
       <table width="340" border="0" cellpadding="2" cellspacing="0">
         <tr class="tableTitle">
           <td colspan="3">Submit Order</td>
@@ -78,8 +78,8 @@
             Quantity: <input id="qtyN" type="text" size="8" style="font-size: 8pt" />
           </td>
           <td width="130" style="text-align: center;">
-            <input type="submit" id="buy" disabled value="Buy" onclick="submitForm('BUY')" />&nbsp;&nbsp;
-            <input type="submit" id="sell" disabled value="Sell" onclick="submitForm('SELL')" />
+            <input type="submit" id="buy" disabled value="Buy"/>&nbsp;&nbsp;
+            <input type="submit" id="sell" disabled value="Sell"/>
           </td>
         </tr>
       </table>
@@ -92,9 +92,6 @@
       &nbsp; disables sorting).
     </p>
   </div>
-
-  <!-- order entry section management -->
-  <script src="buysell.js" type="text/javascript"></script>
 
   <!-- portfolio table management -->
   <script src="portfolio.js" type="text/javascript"></script>
