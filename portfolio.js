@@ -28,50 +28,60 @@ var portfolioId= "portfolio1";
 var queueSession= null;
 
 require(["ConnectionFactory", "./grid", "StatusWidget"], function(ConnectionFactory, grid, StatusWidget) {
+  
+  //Let's define the initial sorting column
+  grid.changeSort("key");
+  
   ConnectionFactory.createConnection("http://localhost:8080/", "JMS", "HornetQ", null, null, {
     onConnectionCreated: function(conn) {
-  
-      // Connection succeeded, topic subscription
-      var topicSession= conn.createSession(false, "PRE_ACK");
-      var topic= topicSession.createTopic("portfolioTopic");
-      var consumer= topicSession.createConsumer(topic, null);
-  
-      // Let's define the initial sorting column
-      grid.changeSort("key");
-  
-      // Add listener to message consumer
-      consumer.setMessageListener({
-        onMessage: function(message) {
-  
-          // Message received
-          var portfolioMessage= message.getObject();
-          
-          // Update the grid
-          grid.updateRow(portfolioMessage.key, portfolioMessage);
-        }
+      
+      var session = conn.createSession(false, "PRE_ACK");
+      
+      
+      var messageListener = {
+          onMessage: function(message) {
+            var portfolioMessage= message.getObject();
+            grid.updateRow(portfolioMessage.key,portfolioMessage);
+          }
+      };
+      
+      
+      
+      //create the queue that will be used to send requests/messages to the service
+      var queue = session.createQueue("portfolioQueue");
+      var producer = session.createProducer(queue, null);
+      
+      //create the topic, updates to the portfolio status will be received here
+      var topic = session.createTopic("portfolioTopic");
+      var consumer = session.createConsumer(topic, null);
+      
+      //create a temporary queue, the response will arrive here
+      session.createTemporaryQueue(function(tempQueue) {
+        //temp queue ready
+        var responseConsumer = session.createConsumer(tempQueue);
+        responseConsumer.setMessageListener(messageListener);
+       
+
+        
+        //create the request
+        var statusRequest = session.createMapMessage();
+        statusRequest.setObject("request","GET_PORTFOLIO_STATUS");
+        statusRequest.setObject("portfolio",portfolioId);
+        //Set the reply to field to the temp queue you created above, this is the queue the server will respond to
+        statusRequest.setJMSReplyTo(tempQueue);
+        
+        
+        //var correlationId = new Date().getTime() + "" + Math.round(Math.random()*1000);
+        //statusRequest.setJMSCorrelationID(correlationId);
+        producer.send(statusRequest);
+        
       });
-  
+
+     
+      
       // Start the connection
       conn.start();
       
-      //enable form
-      $("input").prop('disabled', false);
-  
-      // Wait a moment before subscribing to avoid the subscribe
-      // message to get to the service before the topic subscription
-      // is actually started
-      setTimeout(function() {
-  
-        // Send subscription message for portfolio
-        queueSession= conn.createSession(false, "AUTO_ACK");
-        var queue= queueSession.createQueue("portfolioQueue");
-        var producer= queueSession.createProducer(queue, null);
-  
-        var msg= queueSession.createTextMessage("SUBSCRIBE|" + portfolioId);
-        producer.send(msg);
-  
-      }, 500);
-  
     },
     onConnectionFailed: function(errorCode, errorMessage) {
 
