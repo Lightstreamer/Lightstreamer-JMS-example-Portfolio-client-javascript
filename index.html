@@ -47,12 +47,8 @@
     <!-- portfolio table; see Lightstreamer-related code in portfolio.js -->
     <table width="340" cellspacing="1" cellpadding="2" border="0">
       <tr>
-        <td width="100" nowrap id="col_command" class="tableTitle button" data-sorting="command">
-          Command
-          <img id="img_command" /></td>
-
         <td width="100" nowrap id="col_key" class="tableTitle button" data-sorting="key">
-          Key
+          Stock
           <img id="img_key" /></td>
 
         <td width="137" nowrap id="col_qty" class="tableTitle button" data-sorting="qty">
@@ -61,7 +57,6 @@
       </tr>
       <!-- row template; will be cloned for each received "ADD" command -->
       <tr class="lscold" id="portfolio" data-source="lightstreamer">
-        <td style="text-align: center;"><div data-source="lightstreamer" data-field="command"></div></td>
         <td style="text-align: center;"><div data-source="lightstreamer" data-field="key"></div></td>
         <td style="text-align: right;"><div data-source="lightstreamer" data-field="qty"></div></td>
       </tr>
