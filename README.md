@@ -30,7 +30,7 @@ Before you can run the demo of this project, some dependencies need to be solved
 * RequireJS is currently hot-linked in the html page: you may want to replace it with a local version and/or to upgrade its version.
 * jQuery is currently hot-linked in the html page: you may want to replace it with a local version and/or to upgrade its version.
 
-Now, you need to configure the `portfolio.js` of this example by specifying the name of the data adapter you are going to use. By default the demo will look for the <b>HornetQ</b> data adapter, please refer to the related [Service project](https://github.com/Weswit/Lightstreamer-JMS-example-Portfolio-service-java) for more details on the choice of a JMS broker to be used.
+Now, you need to configure the `portfolio.js` of this example by specifying the name of the data adapter you are going to use. By default, the demo will look for the <b>HornetQ</b> data adapter, please refer to the related [Service project](https://github.com/Weswit/Lightstreamer-JMS-example-Portfolio-service-java) for more details on the choice of a JMS broker to be used.
 To set the data adapter name and the connection name, look where the connection is created:
 
 ```js
