@@ -123,8 +123,6 @@ jms.ConnectionFactory.createConnection("http://localhost:8080/", "ActiveMQ", nul
   },
 
   onLSClient: function (lsClient) {
-    // Enable connection sharing and status widget (optional)
-    lsClient.connectionSharing.enableSharing("JMSDemoCommonConnection", "ATTACH", "CREATE");
     lsClient.addListener(new StatusWidget("left", "0px", true));
   }
 });
