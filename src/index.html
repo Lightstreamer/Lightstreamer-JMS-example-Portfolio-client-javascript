@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<!--
+  LIGHTSTREAMER - www.lightstreamer.com
+  JMS Portfolio Demo
+
+  Copyright (c) Lightstreamer Srl
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <title>Lightstreamer :: JMS Portfolio Demo</title>
+  <link rel="stylesheet" type="text/css" href="css/portfolio.css" />
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="http://demos.lightstreamer.com/commons/lightstreamer-widgets.js"></script>
+  <script src="https://unpkg.com/lightstreamer-jms-web-client"></script>
+</head>
+
+<body>
+  <a href="https://github.com/Lightstreamer/Lightstreamer-JMS-example-Portfolio-client-javascript"><img style="position: absolute; top: 0; right: 0; border: 0; z-index:1" src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png" alt="Fork me on GitHub"></a>
+  <div id="wrap">
+    <table width="340" border="0">
+      <tr>
+        <td><a href="http://www.lightstreamer.com" target="_blank">
+          <img src="images/logo.png" alt="LIGHTSTREAMER" hspace="0" border="0" /></a></td>
+        <td class="demoTitle">JMS PORTFOLIO DEMO</td>
+      </tr>
+    </table>
+
+    <br />
+
+    <!-- portfolio table; see Lightstreamer-related code in portfolio.js -->
+    <table width="340" cellspacing="1" cellpadding="2" border="0">
+      <tr>
+        <td width="100" nowrap id="col_key" class="tableTitle button" data-sorting="key">
+          Stock
+          <img id="img_key" /></td>
+
+        <td width="137" nowrap id="col_qty" class="tableTitle button" data-sorting="qty">
+          Quantity
+          <img id="img_qty" /></td>
+      </tr>
+      <!-- row template; will be cloned for each received "ADD" command -->
+      <tr class="lscold" id="portfolio" data-source="lightstreamer">
+        <td style="text-align: center;"><div data-source="lightstreamer" data-field="key"></div></td>
+        <td style="text-align: right;"><div data-source="lightstreamer" data-field="qty"></div></td>
+      </tr>
+    </table>
+
+    <br />
+
+    <!-- order entry section; see management code in buysell.js -->
+    <form>
+      <table width="340" border="0" cellpadding="2" cellspacing="0">
+        <tr class="tableTitle">
+          <td colspan="3">Submit Order</td>
+        </tr>
+        <tr class="inputPanel">
+          <td width="80">
+            <select id="stockN" type="select" style="font-size: 8pt"></select>
+          </td>
+          <td width="130">
+            Quantity: <input id="qtyN" type="text" size="8" style="font-size: 8pt" />
+          </td>
+          <td width="130" style="text-align: center;">
+            <input type="submit" id="buy" disabled value="Buy"/>&nbsp;&nbsp;
+            <input type="submit" id="sell" disabled value="Sell"/>
+          </td>
+        </tr>
+      </table>
+    </form>
+
+    <p class="note">
+      - Use the red panel to <b>BUY</b> and <b>SELL</b> stocks.<br />
+      - Click on any table title to <b>SORT</b> on different columns<br />
+      &nbsp; (each click inverts the sort direction and the third click<br />
+      &nbsp; disables sorting).
+    </p>
+  </div>
+
+  <!-- portfolio table management -->
+  <script type="module" src="js/app.js"></script>
+
+</body>
+
+</html>
