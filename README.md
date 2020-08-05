@@ -1,7 +1,5 @@
 # Lightstreamer JMS Extender - Basic Portfolio Demo - HTML Client
 
-<!-- START DESCRIPTION lightstreamer-jms-example-portfolio-client-javascript -->
-
 This project includes a front-end example based on the Basic Portfolio Demo for Lightstreamer Server.
 
 ## Details
@@ -14,8 +12,6 @@ This example uses the [_Lightstreamer JMS Extender Web Client API_](https://www.
 Check out the sources for further explanations.
 
 ![screenshot](screen-large.png)
-
-<!-- END DESCRIPTION lightstreamer-jms-example-portfolio-client-javascript -->
 
 ## Install
 
@@ -42,10 +38,7 @@ Depending on the browser in use, and on the security settings, you might also be
 
 ### Lightstreamer Service Needed by This Demo Client
 
-<!-- START RELATED_ENTRIES -->
 * [Lightstreamer JMS Extender - Portfolio Demo - Java (JMS) Service](https://github.com/Lightstreamer/Lightstreamer-JMS-example-Portfolio-service-java)
-
-<!-- END RELATED_ENTRIES -->
 
 ### Related Projects
 
