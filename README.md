@@ -1,13 +1,12 @@
 # Lightstreamer JMS Extender - Basic Portfolio Demo - HTML Client
 
-This project includes a front-end example based on the Basic Portfolio Demo for Lightstreamer Server.
+This project contains a web application that shows how the Lightstreamer JMS Extender JavaScript Client Library can be used to connect to Lightstreamer JMS Extender.  
+This projects is the JMS Extender version of the [Lightstreamer - Portfolio demo - HTML Client](https://github.com/Lightstreamer/Lightstreamer-example-Portfolio-client-javascript).
 
 ## Details
 
-In the JMS Portfolio Demo, a virtual stock portfolio, shared among all the connected users, is displayed.
+In this demo, a virtual stock portfolio, shared among all the connected users, is displayed.
 By using the "Submit Order" panel, you can buy or sell a stock (identified by an item number), filling in the Quantity field and pressing the proper button.
-
-This example uses the [_Lightstreamer JMS Extender Web Client API_](https://www.npmjs.com/package/lightstreamer-jms-web-client/) to handle the communications with JMS Extender.
 
 Check out the sources for further explanations.
 
@@ -44,7 +43,7 @@ Depending on the browser in use, and on the security settings, you might also be
 
 * [Lightstreamer JMS Extender - Basic Stock-List Demo - HTML Client](https://github.com/Lightstreamer/Lightstreamer-JMS-example-StockList-client-javascript)
 * [Lightstreamer JMS Extender - Basic Chat Demo - HTML Client](https://github.com/Lightstreamer/Lightstreamer-JMS-example-Chat-client-javascript)
-* [Lightstreamer - Portfolio Demos - HTML Clients](https://github.com/Lightstreamer/Lightstreamer-example-Portfolio-client-javascript)
+* [Lightstreamer - Portfolio demo - HTML Client](https://github.com/Lightstreamer/Lightstreamer-example-Portfolio-client-javascript)
 
 ## Lightstreamer Compatibility Notes
 
